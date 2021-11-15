@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31515.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hack", "Hack.csproj", "{60360963-3329-4BCB-826F-14A722432520}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{60360963-3329-4BCB-826F-14A722432520}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60360963-3329-4BCB-826F-14A722432520}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60360963-3329-4BCB-826F-14A722432520}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60360963-3329-4BCB-826F-14A722432520}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D005C6A3-1573-4271-974C-4EDE3248CBF7}
+	EndGlobalSection
+EndGlobal
