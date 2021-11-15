@@ -1,31 +1,69 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+using System.IO;
+using System.Text;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+
+
+
 namespace Hack
 {
     class Program
     {
+        [DllImport("user32.dll", SetLastError = true)]
+        static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
+
+        [DllImport("user32.dll")]
+        static extern int SetWindowLong(IntPtr hWnd, int nIndex, uint dwNewLong);
+
+        [DllImport("user32.dll", SetLastError = true)]
+        static extern UInt32 GetWindowLong(IntPtr hWnd, int nIndex);
+
+        public static int GWL_STYLE = -16;
+        public static uint WS_THICKFRAME = 0x00040000;
+
         static object locker=new object();
         static Random rnd = new Random();
         static int height = 0;
         static int width = 0;
         static void Main(string[] args)
         {
-            
+
+            IntPtr hwnd = FindWindow("ConsoleWindowClass", null);
+            if (hwnd != null)
+            {
+                SetWindowLong(
+                    hwnd,
+                    GWL_STYLE,
+                    GetWindowLong(hwnd, GWL_STYLE) ^ WS_THICKFRAME
+                );
+            }
             Console.CursorVisible = false;
             height = Console.WindowHeight;
             width = Console.WindowWidth;
+       
             Console.ForegroundColor = ConsoleColor.DarkGreen;
 
             Task task = new Task(WindowSize);
             task.Start();
-            
+            Task mouse = new Task(Mouse);
+            mouse.Start();
             for (int i = 0; i < width; i++)
             {
                 Thread thread = new Thread(new ParameterizedThreadStart(ColumnDraw));
                 thread.Start(i);
             }
 
+        }
+        static void Mouse()
+        {
+            while(true)
+            {
+                
+            }
         }
         static void WindowSize()
         {
