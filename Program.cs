@@ -32,13 +32,13 @@ namespace Hack
         static void Main(string[] args)
         {
 
-            IntPtr hwnd = FindWindow("ConsoleWindowClass", null);
+            IntPtr? hwnd = FindWindow("ConsoleWindowClass", null);
             if (hwnd != null)
             {
                 SetWindowLong(
-                    hwnd,
+                    hwnd.Value,
                     GWL_STYLE,
-                    GetWindowLong(hwnd, GWL_STYLE) ^ WS_THICKFRAME
+                    GetWindowLong(hwnd.Value, GWL_STYLE) ^ WS_THICKFRAME
                 );
             }
             Console.CursorVisible = false;
