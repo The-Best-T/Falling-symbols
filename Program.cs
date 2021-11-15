@@ -43,14 +43,9 @@ namespace Hack
             }
             Console.CursorVisible = false;
             height = Console.WindowHeight;
-            width = Console.WindowWidth;
-       
+            width = Console.WindowWidth;    
             Console.ForegroundColor = ConsoleColor.DarkGreen;
 
-            Task task = new Task(WindowSize);
-            task.Start();
-            Task mouse = new Task(Mouse);
-            mouse.Start();
             for (int i = 0; i < width; i++)
             {
                 Thread thread = new Thread(new ParameterizedThreadStart(ColumnDraw));
@@ -58,25 +53,6 @@ namespace Hack
             }
 
         }
-        static void Mouse()
-        {
-            while(true)
-            {
-                
-            }
-        }
-        static void WindowSize()
-        {
-            while(true)
-            {
-                lock (locker)
-                {
-                    if (Console.WindowWidth != width) Console.WindowWidth = width;
-                    if (Console.WindowHeight != height) Console.WindowHeight = height;
-                }
-            }
-        }
-
         static void ColumnDraw(object x)
         {
             int column = (int)x;
